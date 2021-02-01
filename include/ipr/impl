@@ -80,7 +80,7 @@ namespace ipr {
          
          explicit ref_sequence(std::size_t n = 0) : Rep(n) { }
          
-         int size() const final { return Rep::size(); }
+         int size() const final { return static_cast<int>(Rep::size()); }
          
          using Seq::operator[];
          using Seq::begin;
@@ -112,7 +112,7 @@ namespace ipr {
          
          int size() const final 
          {
-            return std::distance(Impl::begin(), Impl::end());
+            return static_cast<int>(std::distance(Impl::begin(), Impl::end()));
          }
 
          template<typename... Args>
