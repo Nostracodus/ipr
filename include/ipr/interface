@@ -124,7 +124,7 @@ namespace ipr {
    struct Array_delete;          // array delete-expression     delete[] p
    struct Complement;            // bitwise complement                  ~m
    struct Delete;                // delete-expression             delete p
-   struct Demote;                // inverse of an integral or floating-point
+   struct Demotion;              // inverse of an integral or floating-point
                                  // promotion
    struct Deref;                 // dereference expression              *p
    struct Expr_list;             // expression list        
@@ -133,14 +133,14 @@ namespace ipr {
    struct Id_expr;               // an identifier used in an expression
    struct Label;                 // a label - target of a goto-statement
                                  //         or entry of a switch-statement
-   struct Materialize;           // temporary materialization
+   struct Materialization;       // temporary materialization
    struct Not;                   // logical negation                 !cond
    struct Paren_expr;            // parenthesized expression           (a)
    struct Post_decrement;        // post-increment                     p++
    struct Post_increment;        // post-decrement                     p--
    struct Pre_decrement;         // pre-increment                      ++p
    struct Pre_increment;         // pre-decrement                      --p
-   struct Promote;               // integral or floating-point promotion
+   struct Promotion;             // integral or floating-point promotion
    struct Read;                  // lvalue to rvalue conversion
    struct Throw;                 // throw expression           throw Bad()
    struct Unary_minus;           // unary minus                         -a
@@ -165,7 +165,7 @@ namespace ipr {
    struct Bitxor_assign;         // in-place bitwise exclusive or  a ^= b
    struct Call;                  // function call                  f(u, v)
    struct Cast;                  // C-style class                  (T) e
-   struct Coerce;                // generalized type conversion
+   struct Coercion;              // generalized type conversion
    struct Comma;                 // comma-operator                 a, b
    struct Const_cast;            // const-cast             const_cast<T&>(v)
    struct Datum;                 // object construction             T(v)
@@ -1174,9 +1174,9 @@ namespace ipr {
       const Expr& storage() const { return operand(); }
    };
 
-                                   // -- Demote --
+                                // -- Demotion --
    // Integral or floating point conversion
-   struct Demote : Unary<Category<demote_cat>> { };
+   struct Demotion : Unary<Category<demotion_cat>> { };
 
                                 // -- Deref --
    // Dereference-expression -- "*expr"
@@ -1230,9 +1230,9 @@ namespace ipr {
       Arg_type name() const { return operand(); }
    };
 
-                                // -- Materialize --
+                                // -- Materialization --
    // Temporary materialization
-   struct Materialize : Unary<Category<materialize_cat>> { };
+   struct Materialization : Unary<Category<materialization_cat>> { };
 
                                 // -- Not --
    // logical-not-expression -- "!expr"
@@ -1254,9 +1254,9 @@ namespace ipr {
    // pre-increment-expression -- "++expr".
    struct Pre_increment : Unary<Category<pre_increment_cat, Classic>> { };
 
-                                // -- Promote --
+                                // -- Promotion --
    // Integral or floating point promotion -- "(int)'2'"
-   struct Promote : Unary<Category<promote_cat>> { };
+   struct Promotion : Unary<Category<promotion_cat>> { };
 
                                 // -- Read --
    // Lvalue-to-rvalue conversion -- "= var"
@@ -1389,11 +1389,11 @@ namespace ipr {
       Arg2_type args() const { return second(); }
    };
 
-                                // -- Coerce --
+                                // -- Coercion --
    // A generalized type conversion either built-in to the language or
    // programmatically defined by either constructors or conversion
    // functions.
-   struct Coerce : Binary<Category<conditional_cat, Classic>, const Expr&, const Type&> {
+   struct Coercion : Binary<Category<coercion_cat, Classic>, const Expr&, const Type&> {
       Arg1_type expr() const { return first(); }
       Arg2_type target() const { return second(); }
    };
@@ -2133,7 +2133,7 @@ namespace ipr {
       virtual void visit(const Array_delete&); 
       virtual void visit(const Complement&); 
       virtual void visit(const Delete&); 
-      virtual void visit(const Demote&);
+      virtual void visit(const Demotion&);
       virtual void visit(const Deref&);
       virtual void visit(const Paren_expr&);
       virtual void visit(const Sizeof&);
@@ -2142,12 +2142,12 @@ namespace ipr {
       virtual void visit(const Id_expr&);
       virtual void visit(const Label&);
       virtual void visit(const Not&); 
-      virtual void visit(const Materialize&);
+      virtual void visit(const Materialization&);
       virtual void visit(const Post_decrement&);
       virtual void visit(const Post_increment&); 
       virtual void visit(const Pre_decrement&); 
       virtual void visit(const Pre_increment&); 
-      virtual void visit(const Promote&);
+      virtual void visit(const Promotion&);
       virtual void visit(const Read&);
       virtual void visit(const Throw&);
       virtual void visit(const Unary_minus&); 
@@ -2168,7 +2168,7 @@ namespace ipr {
       virtual void visit(const Bitxor_assign&);
       virtual void visit(const Cast&); 
       virtual void visit(const Call&); 
-      virtual void visit(const Coerce&);
+      virtual void visit(const Coercion&);
       virtual void visit(const Comma&);
       virtual void visit(const Const_cast&); 
       virtual void visit(const Datum&); 

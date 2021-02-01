@@ -51,21 +51,21 @@ address_cat,                            // ipr::Address
 array_delete_cat,                       // ipr::Array_delete
 complement_cat,                         // ipr::Complement
 delete_cat,                             // ipr::Delete
-demote_cat,                             // ipr::Demote
+demotion_cat,                           // ipr::Demotion
 deref_cat,                              // ipr::Deref
 expr_list_cat,                          // ipr::Expr_list
 sizeof_cat,                             // ipr::Sizeof
 typeid_cat,                             // ipr::Typeid
 id_expr_cat,                            // ipr::Id_expr
 label_cat,                              // ipr::Label
-materialize_cat,                        // ipr::Materialize
+materialization_cat,                    // ipr::Materialization
 not_cat,                                // ipr::Not
 paren_expr_cat,                         // ipr::Paren_expr
 post_decrement_cat,                     // ipr::Post_decrement
 post_increment_cat,                     // ipr::Post_increment
 pre_decrement_cat,                      // ipr::Pre_decrement
 pre_increment_cat,                      // ipr::Pre_increment
-promote_cat,                            // ipr::Promote
+promotion_cat,                          // ipr::Promotion
 read_cat,                               // ipr::Read
 throw_cat,                              // ipr::Throw
 unary_minus_cat,                        // ipr::Unary_minus
@@ -123,7 +123,7 @@ binary_fold_cat,                        // ipr::Binary_fold
 qualification_cat,                      // ipr::Qualification
 
 new_cat,                                // ipr::New
-coerce_cat,                             // ipr::Coerce
+coercion_cat,                           // ipr::Coercion
 conditional_cat,                        // ipr::Conditional
 scope_cat,                              // ipr::Scope
 
